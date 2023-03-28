@@ -1,1 +1,2 @@
 This is test!
+The purpose of this folder is to MERGE the content that we've created into one testable working environment to a working model ideally for production eventually. 
