@@ -5,6 +5,19 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
+def index(request):
+    """View function for home page of site."""
+    num_products = Product.objects.all().count()
+    num_categories = Category.objects.all().count()
+
+    context = {
+        'num_products': num_products,
+        'num_categories': num_categories,
+    }
+    # Render the HTML template index.html with the data in the context variable
+    return render(request, 'shop/product/index.html', context=context)
+
+
 def product_list(request, category_slug=None):
     category = None
     categories = Category.objects.all()
