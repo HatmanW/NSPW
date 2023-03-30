@@ -129,6 +129,9 @@ STATIC_URL = 'static/'
 
 CART_SESSION_ID = 'cart'
 
+LOGIN_REDIRECT_URL = '/'
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 

@@ -1,6 +1,8 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
 from cart.forms import CartAddProductForm
+from django.views import generic
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 def product_list(request, category_slug=None):
@@ -27,4 +29,8 @@ def product_detail(request, id, slug):
                   'shop/product/detail.html',
                   {'product': product,
                    'cart_product_form': cart_product_form})
+
+
+class ProductListView(LoginRequiredMixin, generic.ListView):
+    model = Product
 
