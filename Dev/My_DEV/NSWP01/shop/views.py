@@ -47,3 +47,7 @@ def product_detail(request, id, slug):
 class ProductListView(LoginRequiredMixin, generic.ListView):
     model = Product
 
+
+class ProductCategoryView(LoginRequiredMixin, generic.ListView):
+    model = Category
+
