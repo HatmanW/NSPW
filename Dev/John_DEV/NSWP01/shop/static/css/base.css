@@ -133,13 +133,14 @@ ul.errorlist {
     font-family: 'Ubuntu', sans-serif;
     float:left;
     color:#333;
-    font-size:22px;
+    font-size:30px;
     margin-right:10%;
 }
 
 #subheader .cart {
     float:right;
     padding-top:4px;
+    color: #f6f6f6;
 }
 
 #content {
