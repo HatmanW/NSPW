@@ -110,12 +110,18 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'nspw3900'
+EMAIL_HOST_PASSWORD = 'jytvoxlzidtqseob'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+SERVER_EMAIL = 'root@gmail.com'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
 TIME_ZONE = 'America/Chicago'
 LANGUAGE_CODE = 'en-us'
-
 
 
 USE_I18N = True
