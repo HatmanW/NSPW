@@ -329,3 +329,7 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+.form-gap {
+    padding-top: 70px;
+}
