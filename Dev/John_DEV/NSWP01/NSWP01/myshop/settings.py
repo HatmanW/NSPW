@@ -145,9 +145,9 @@ LOGIN_REDIRECT_URL = '/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Braintree settings - replace with your credentials after signing up for braintree account
-BRAINTREE_MERCHANT_ID = 'Merchant ID'  # Merchant ID
-BRAINTREE_PUBLIC_KEY = 'Public Key'   # Public Key
-BRAINTREE_PRIVATE_KEY = 'Private key'  # Private key
+BRAINTREE_MERCHANT_ID = 'tc5vbb2d3mmvkrxb'  # Merchant ID
+BRAINTREE_PUBLIC_KEY = 'pbh7btyn2xn5r3zm'   # Public Key
+BRAINTREE_PRIVATE_KEY = '26eb27d936282c07e08a28ad18ad64cc'  # Private key
 
 
 Configuration.configure(
