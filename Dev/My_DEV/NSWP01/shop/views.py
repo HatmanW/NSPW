@@ -1,8 +1,8 @@
-from django.shortcuts import render, get_object_or_404
-
+from django.db.models import Q
+from django.shortcuts import render, get_object_or_404, redirect, reverse
 from .models import Category, Product
 from cart.forms import CartAddProductForm
-from django.views import generic
+from django.views import generic, View
 from django.contrib.auth.mixins import LoginRequiredMixin
 
 
@@ -27,10 +27,62 @@ def product_list(request, category_slug=None):
         category = get_object_or_404(Category, slug=category_slug)
         products = products.filter(category=category)
     return render(request,
-                  'shop/product/list.html',
+                  'shop/product/product_list.html',
                   {'category': category,
                    'categories': categories,
                    'products': products})
+
+
+def mens_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request,
+                  'shop/product/mens_list.html',
+                  {'category': category,
+                   'categories': categories,
+                   'products': products})
+
+
+def womens_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request,
+                  'shop/product/mens_list.html',
+                  {'category': category,
+                   'categories': categories,
+                   'products': products})
+
+
+def kids_list(request, category_slug=None):
+    category = None
+    categories = Category.objects.all()
+    products = Product.objects.filter(available=True)
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+    return render(request,
+                  'shop/product/mens_list.html',
+                  {'category': category,
+                   'categories': categories,
+                   'products': products})
+
+
+def search_list(request):
+    if request.GET.get('query'):
+        search_slug = request.GET.get('query')
+        products = Product.objects.filter(Q(name__icontains=search_slug) | Q(description__icontains=search_slug))
+        products = products.order_by('name')
+        return render(request, 'shop/product/search_list.html', {'products': products})
+    products = Product.objects.filter(available=True)
+    return render(request, 'shop/product/search_list.html', {'products': products})
 
 
 def product_detail(request, id, slug):
@@ -38,6 +90,7 @@ def product_detail(request, id, slug):
                                 id=id,
                                 slug=slug,
                                 available=True)
+
     cart_product_form = CartAddProductForm()
     return render(request,
                   'shop/product/detail.html',
@@ -51,3 +104,4 @@ class ProductListView(LoginRequiredMixin, generic.ListView):
 
 class ProductCategoryView(LoginRequiredMixin, generic.ListView):
     model = Category
+
