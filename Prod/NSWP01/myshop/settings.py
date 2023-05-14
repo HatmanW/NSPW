@@ -47,7 +47,6 @@ INSTALLED_APPS = [
     'payment.apps.PaymentConfig',
     'register.apps.RegisterConfig',
     'crispy_forms',
-    'django_admin_listfilter_dropdown',
     'braintree',
 
 ]
