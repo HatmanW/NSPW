@@ -78,7 +78,7 @@ def kids_list(request, category_slug=None):
 def search_list(request):
     if request.GET.get('query'):
         search_slug = request.GET.get('query')
-        products = Product.objects.filter(Q(name__istartswith=search_slug) | Q(name__istartswith=search_slug))
+        products = Product.objects.filter(Q(name__startswith=search_slug) | Q(name__icontains=search_slug))
         products = products.order_by('name')
         return render(request, 'shop/product/search_list.html', {'products': products})
     products = Product.objects.filter(available=True)
